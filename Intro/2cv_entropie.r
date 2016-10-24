@@ -41,3 +41,12 @@ table(observations)
 # Spocitejte podminene entropie
 # HW H(X|Y), H(Y|X), I(X;Y)
 # Jelikoz jsou promenne generovany nahodne, tak by se H(X|Y) mela blizit H(X), obdodne pro Y.
+
+#vypocet H(Y|X) = - \sum p(x, y) * log2 p(y|x)
+#                 - \sum p(x, y) * log2 (p(x, y) / p(x))
+#Vztah podminene a sdruzene entropie H(X, Y) = -\sum p(x, y) * log2 p(x, y)
+# H(Y|X) = H(X, Y) - H(X)
+#        = -\sum p(x, y) * log2 p(x, y) + \sum p(x, y) log2 p(x)
+#        =             H(X, Y)          + \sum_x log 2 p(x, y) * \sum_y p(x,y)
+#        =             H(X, Y)          + \sum_x log 2 p(x, y) *      p(x)
+
