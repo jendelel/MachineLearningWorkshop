@@ -14,3 +14,11 @@ pnorm(168, 167.2, sqrt(50)) - pnorm(166, 167.2, sqrt(50))
 1 - pnorm(200, 180.3, sqrt(100)) + pnorm(165, 180.3, sqrt(100))
 
 # HW nakreslit obrazek s vybarvenymi pravdepodobnostmi
+
+
+# who is more typical? woman 169 or man 178
+(pnorm(169, 167.2, sqrt(50)) - 0.5) * 2
+# result 0.2009358
+(pnorm(178, 180.3, 10) - 0.5) * 2
+# result -0.1819082
+# therefore man 178 is more typical
