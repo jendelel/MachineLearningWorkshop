@@ -3,7 +3,6 @@
 
 # load data and set fixed seed
 library(ISLR)
-set.seed(42)
 
 # Task 1
 # Subtask a)
@@ -123,6 +122,8 @@ entropy <- function(x){
 
 # Compute entropy of mpg01 on train/test dataset
 print(sprintf(
+	"The entropy of mpg01 on the whole dataset is: %f", entropy(d$mpg01)))
+print(sprintf(
 	"The entropy of mpg01 on train dataset is: %f", entropy(train$mpg01)))
 print(sprintf(
 	"The entropy of mpg01 on test dataset is: %f", entropy(test$mpg01)))
@@ -152,7 +153,7 @@ print(sprintf(
 	"Test error rate of logistic regression is: %f%%", 100 - 100 * acc.test.glm))
 
 # Provide an interpretation of each hypothesis parameter
-print("TODO: Hypothesis parameter, watch out, this is logistic regression")
+# Explanation provided in the document
 coef(m.glm)
 round(exp(coef(m.glm)), 3)
 
@@ -183,10 +184,12 @@ library(rpart)
 m.rpart = rpart(mpg01 ~ cylinders+displacement+horsepower+weight+acceleration+year+origin, data = train, cp=0)
 printcp(m.rpart)
 plotcp(m.rpart)
-summary(m.rpart)
+
+# Looking at the data, cp=0.0020337 is the best
+m.rpart = rpart(mpg01 ~ cylinders+displacement+horsepower+weight+acceleration+year+origin, data = train, cp=0.0020337)
+
 # Subtask e.1)
 # Plot of the tree
-library(rpart.plot)
 rpart.plot(m.rpart)
 # Train error rate
 predicted.train.rpart = sapply(predict(m.rpart, train[, -1], type="vector"), FUN=round)
